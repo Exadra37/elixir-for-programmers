@@ -29,7 +29,7 @@ defmodule Hangman.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      { :dictionary, path: "..//dictionary" },
+      { :dictionary, path: "../dictionary" },
     ]
   end
 end

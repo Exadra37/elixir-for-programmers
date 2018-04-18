@@ -40,7 +40,7 @@ defmodule GameTest do
     assert game.game_state != :already_used
   end
 
-  test "state isn't changed for :won game" do
+  test "state isn't changed for :won or :lost game" do
 
     for state <- [:won, :lost] do
       game = Game.new_game() |> Map.put(:game_state, state)

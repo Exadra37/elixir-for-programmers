@@ -14,7 +14,9 @@ defmodule Hangman.Game do
   ### PUBLIC API ####
 
   def new_game() do
-    new_game(Dictionary.random_word)
+    Dictionary.start()
+    |> Dictionary.random_word()
+    |> new_game()
   end
 
   def new_game(word) do
@@ -33,7 +35,7 @@ defmodule Hangman.Game do
     %{
       game_state: game.game_state,
       turns_left: game.turns_left,
-      letters:    game.letters |> revelal_guessed(game.used),
+      letters:    game.letters |> reveal_guessed(game.used),
       used:       game.used |> MapSet.to_list() |> Enum.join(" "),
     }
   end
@@ -93,7 +95,7 @@ defmodule Hangman.Game do
     :good_guess
   end
 
-  defp revelal_guessed(letters, used) do
+  defp reveal_guessed(letters, used) do
 
     function = fn letter ->
                  letter
