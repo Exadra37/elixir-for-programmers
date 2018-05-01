@@ -1,6 +1,8 @@
 defmodule TextClient.Summary do
 
-  def display(game = %{ tally: tally }) do
+  alias TextClient.State
+
+  def display(text_client_state = %State{ tally: tally }) do
     IO.puts [
       "\n",
       "Word so far: #{Enum.join(tally.letters, " ")}\n",
@@ -8,7 +10,7 @@ defmodule TextClient.Summary do
       "Letters used: #{tally.used}\n",
     ]
 
-    game
+    text_client_state
   end
 
 end

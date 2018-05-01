@@ -1,5 +1,7 @@
 defmodule Hangman.Game do
 
+  alias Hangman.Game
+
   # TODO:
   #   → Can i improve this?
   @valid_letters ?a..?z |> Enum.to_list() |> to_string() |> String.split("", trim: true)
@@ -19,19 +21,19 @@ defmodule Hangman.Game do
   end
 
   def new_game(word) do
-    %Hangman.Game{
+    %Game{
       word:    word,
       letters: word |> String.codepoints
     }
   end
 
-  def make_move(game, guess) do
+  def make_move(game = %Game{}, guess) do
     game
     |> accept_move(guess)
     |> game_tally()
   end
 
-  def tally(game) do
+  def tally(game = %Game{}) do
     %{
       game_state: game.game_state,
       turns_left: game.turns_left,

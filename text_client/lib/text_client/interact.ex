@@ -8,10 +8,10 @@ defmodule TextClient.Interact do
     |> Player.play()
   end
 
-  defp setup_state(game) do
+  defp setup_state(game_pid) do
     %State{
-      game_service: game,
-      tally: Hangman.tally(game),
+      game_pid: game_pid,
+      tally: Hangman.tally(game_pid),
     }
   end
 
