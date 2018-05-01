@@ -2,13 +2,13 @@ defmodule TextClient.Player do
 
   alias TextClient.{Mover, Prompter, Summary, State}
 
-  def play(game = %State{tally: %{ game_state: :won }}) do
-    IO.puts "\nWORD: #{Enum.join(game.game_service.letters, "")}"
+  def play(%State{tally: %{ game_state: :won , word: word}}) do
+    IO.puts "\nWORD: #{word}"
     exit_with_message("You WON!")
   end
 
-  def play(game = %State{tally: %{ game_state: :lost }}) do
-    exit_with_message("\nSorry, you lost...\nWord was: #{Enum.join(game.game_service.letters, "")}")
+  def play(%State{tally: %{ game_state: :lost, word: word }}) do
+    exit_with_message("\nSorry, you lost...\nWord was: #{word}")
   end
 
   def play(game = %State{tally: %{ game_state: :good_guess }}) do
