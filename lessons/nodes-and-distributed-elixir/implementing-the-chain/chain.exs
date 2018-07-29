@@ -92,7 +92,6 @@ Average time per message: 0.002911944 seconds
   def start_link(next_node) do
     %Chain{
       next_node: next_node,
-      start_time: Time.utc_now(),
     }
     |> _start_link()
   end
@@ -129,7 +128,7 @@ Average time per message: 0.002911944 seconds
   defp init_timer(chain = %{ start_time: nil }) do
     start_time = Time.utc_now()
 
-    IO.puts "\n→ Starting tp process #{chain.initial_count} at #{start_time}\n"
+    IO.puts "\n→ Starting to process #{chain.initial_count} at #{start_time} on node #{node()}\n"
 
     %{ chain | start_time: start_time }
   end
