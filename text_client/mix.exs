@@ -14,7 +14,10 @@ defmodule TextClient.Mixfile do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger]
+      # without declaring hangman as an included application Elixir will start
+      #  it for us, because we have it defined as a dependency in deps/0.
+      included_applications: [ :hangman ],
+      extra_applications:    [ :logger  ],
     ]
   end
 
