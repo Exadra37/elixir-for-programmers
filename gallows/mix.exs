@@ -53,6 +53,7 @@ defmodule Gallows.Mixfile do
       # It seems that Plug cowboy replaces cowboy as a dependency from 2018
       #  onwards.
       {:plug, "1.3.5"},
+      {:hangman, [path: "../hangman"]},
     ]
   end
 end
